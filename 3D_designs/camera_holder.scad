@@ -14,7 +14,7 @@ screwoffset = 4.07;
 border = 2;
 tol = 0.1;
 
-platex = camerax+17;
+platex = camerax+18;
 platey = cameray+10;
 platez = 5;
 
@@ -95,3 +95,15 @@ rotate([90,0,0]){
     }//end rotate
 }//end union
 }//end difference
+
+/*
+translate([-3,0,-11]){
+    rotate([90,0,0]){
+        for (i = [0:9]) {
+            translate([i*(7.85+2),0,0]){
+                cylinder(d=2,h=10);
+            }//end translate
+        }//end for
+    }//end translate
+}//end rotate
+*/

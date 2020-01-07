@@ -5,7 +5,7 @@ cameray=38;
 cameraz=2;
 
 camerainset = 24;
-camerainseth = 14;//17;//22;
+camerainseth = 16;//17;//22;
 screwd=2.3;
 screwh=10;
 sheadd = 3.8;
@@ -22,6 +22,7 @@ pilarx = 17;
 pilary = 7;
 
 ledd = 5;
+ledh = 6.6;
 
 $fn=30;
 fn1 = 30;
@@ -41,8 +42,11 @@ module screw(diam1=screwd+2*tol,h1=screwh,diam2=sheadd+2*tol,h2=sheadh+0.5,fn1=f
 
 module grid(){
             for (i = [0:9]) {
-            translate([i*(7.85+2),0,0]){
-                cylinder(d=2.1,h=80);
+            translate([i*(7.83+2),0,0]){
+                cylinder(d=2.1+tol,h=80);
+                translate([0,-2,40]){
+                cube([2.1+tol,3,80],center=true);    
+                }//end translate
             }//end translate
         }//end for
 
@@ -96,7 +100,7 @@ difference(){
             cube([camerax/2,3,cameraz*2]);
         }//end translate
 
-        translate([-3.5,60,-11.5]){
+        translate([-3.5,60,-camerainseth+4.1]){
             rotate([90,0,0]){
                 grid();
             }//end rotate
@@ -110,23 +114,32 @@ difference(){
 module led_holder(){
     difference(){
 
-        cube([14,10,5]);
+        cube([20,10,ledh+0.5]);
 
-        translate([7,5,-1]){
-            cylinder(d=ledd+2*tol,h=10);
+        translate([9,5,0.6]){
+            cylinder(d2=ledd+tol,d1=ledd-tol,h=ledh);
         }//end translate
 
     }//end difference
 }//end module
 
-//camera_holder();
+
+
+camera_holder();
+
+translate([100,0,0]){
 difference(){
 
-translate([-2,2,-0.5]){
+translate([-5,2,-3]){
 led_holder();
 }//end translate
-rotate([-90,0,0]){
+translate([10,0,0]){
+rotate([-90,180,0]){
+
 grid();
+
+}
 }
 
+}
 }

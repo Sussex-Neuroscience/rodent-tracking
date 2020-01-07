@@ -114,10 +114,10 @@ difference(){
 module led_holder(){
     difference(){
 
-        cube([20,10,ledh+0.5]);
+        cube([18,10,ledh+0.5]);
 
-        translate([9,5,0.6]){
-            cylinder(d2=ledd+tol,d1=ledd-tol,h=ledh);
+        translate([9,5,0.5]){
+            cylinder(d2=ledd+tol,d1=ledd-tol,h=ledh+0.1);
         }//end translate
 
     }//end difference
@@ -133,7 +133,7 @@ difference(){
 translate([-5,2,-3]){
 led_holder();
 }//end translate
-translate([10,0,0]){
+translate([9,0,0]){
 rotate([-90,180,0]){
 
 grid();

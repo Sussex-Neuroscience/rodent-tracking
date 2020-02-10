@@ -12,7 +12,7 @@ basez = IRledarrayh+7;
 
 
 
-$fn=30;
+$fn=50;
 
 ///// modules ////////
 
@@ -43,8 +43,8 @@ difference(){
             cube([20,basey+2,15]);
     }//end translate
     
-    translate([(basex)/2,(basey)/2,5]){
-            cylinder(d=IRledarrayd+2*tol+2,h=IRledarrayh);
+    translate([(basex)/2,(basey)/2,7]){//5 was the original height
+            cylinder(d=IRledarrayd+2*tol+1,h=IRledarrayh);
             }//end translate
             
     translate([(basex)/2,(basey)/2,-basez/2]){

@@ -39,11 +39,9 @@ wheelInd = np.append(wheelInd,False)
 
 #these are all the time stamps (the first of each detection burst) where the wheel marker was detected
 times[wheelInd]
-interval = list(times[wheelInd].diff())
 
-plt.hist(interval[1:])
+intervals = times[wheelInd]
 
-np.array()
 
 
 #get the unique values

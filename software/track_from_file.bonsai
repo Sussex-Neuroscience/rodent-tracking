@@ -12,7 +12,7 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
           <cv:FileName>D:\data_from_animal_fac\4hour_test_olenna2020-02-21T07_04_53.avi</cv:FileName>
-          <cv:PlaybackRate>0</cv:PlaybackRate>
+          <cv:PlaybackRate>120</cv:PlaybackRate>
           <cv:StartPosition>0</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
           <cv:Loop>false</cv:Loop>
@@ -35,7 +35,7 @@
           <cv:Upper>
             <cv:Val0>179</cv:Val0>
             <cv:Val1>255</cv:Val1>
-            <cv:Val2>101</cv:Val2>
+            <cv:Val2>50</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Upper>
         </Combinator>
@@ -49,10 +49,10 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>64</cv:X>
-                  <cv:Y>74</cv:Y>
-                  <cv:Width>572</cv:Width>
-                  <cv:Height>360</cv:Height>
+                  <cv:X>4</cv:X>
+                  <cv:Y>44</cv:Y>
+                  <cv:Width>602</cv:Width>
+                  <cv:Height>436</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
@@ -64,7 +64,7 @@
                   <cv:X>0</cv:X>
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
-                <cv:MinArea>1450</cv:MinArea>
+                <cv:MinArea>1300</cv:MinArea>
                 <cv:MaxArea xsi:nil="true" />
               </Combinator>
             </Expression>
@@ -194,7 +194,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.041382399998838082</Value>
+          <Value>0.019942400002037175</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -211,7 +211,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.041382399998838082</Value>
+          <Value>0.019942400002037175</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -227,7 +227,7 @@
           <Property Name="Value" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="BitwiseAnd">
+      <Expression xsi:type="BitwiseOr">
         <Operand xsi:type="BooleanProperty">
           <Value>false</Value>
         </Operand>
@@ -254,7 +254,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.041382399998838082</Value>
+          <Value>0.019942400002037175</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -279,7 +279,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.041382399998838082</Value>
+          <Value>0.019942400002037175</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -295,7 +295,7 @@
           <Property Name="Value" />
         </PropertyMappings>
       </Expression>
-      <Expression xsi:type="BitwiseAnd">
+      <Expression xsi:type="BitwiseOr">
         <Operand xsi:type="BooleanProperty">
           <Value>false</Value>
         </Operand>

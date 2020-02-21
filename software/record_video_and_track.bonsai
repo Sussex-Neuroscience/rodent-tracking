@@ -59,7 +59,7 @@
               </Combinator>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
-            <Expression xsi:type="IncludeWorkflow" Path="Extensions\threshold_crop_track_record.bonsai" />
+            <Expression xsi:type="IncludeWorkflow" Path="Extensions\track_and_analyse.bonsai" />
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />

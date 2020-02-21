@@ -9,15 +9,8 @@
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>D:\repositories\rodent-tracking\test_data\test_continous2020-02-06T07_56_44.avi</cv:FileName>
-          <cv:PlaybackRate>0</cv:PlaybackRate>
-          <cv:StartPosition>0</cv:StartPosition>
-          <cv:PositionUnits>Frames</cv:PositionUnits>
-          <cv:Loop>false</cv:Loop>
-          <cv:Playing>true</cv:Playing>
-        </Combinator>
+      <Expression xsi:type="WorkflowInput">
+        <Name>Source1</Name>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:ConvertColor">
@@ -321,6 +314,7 @@
         <io:Suffix>FileCount</io:Suffix>
         <io:IncludeHeader>true</io:IncludeHeader>
       </Expression>
+      <Expression xsi:type="WorkflowOutput" />
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
@@ -388,6 +382,7 @@
       <Edge From="46" To="47" Label="Source1" />
       <Edge From="47" To="48" Label="Source1" />
       <Edge From="48" To="49" Label="Source1" />
+      <Edge From="49" To="50" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

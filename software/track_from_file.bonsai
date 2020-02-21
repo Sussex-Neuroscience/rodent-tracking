@@ -3,15 +3,15 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
-                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>D:\repositories\rodent-tracking\test_data\test_continous2020-02-06T07_56_44.avi</cv:FileName>
+          <cv:FileName>D:\data_from_animal_fac\4hour_test_olenna2020-02-21T07_04_53.avi</cv:FileName>
           <cv:PlaybackRate>0</cv:PlaybackRate>
           <cv:StartPosition>0</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
@@ -49,8 +49,8 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>66</cv:X>
-                  <cv:Y>100</cv:Y>
+                  <cv:X>64</cv:X>
+                  <cv:Y>74</cv:Y>
                   <cv:Width>572</cv:Width>
                   <cv:Height>360</cv:Height>
                 </cv:RegionOfInterest>
@@ -64,7 +64,7 @@
                   <cv:X>0</cv:X>
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
-                <cv:MinArea>1000</cv:MinArea>
+                <cv:MinArea>1450</cv:MinArea>
                 <cv:MaxArea xsi:nil="true" />
               </Combinator>
             </Expression>
@@ -107,8 +107,8 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>66</cv:X>
-                  <cv:Y>228</cv:Y>
+                  <cv:X>222</cv:X>
+                  <cv:Y>196</cv:Y>
                   <cv:Width>168</cv:Width>
                   <cv:Height>148</cv:Height>
                 </cv:RegionOfInterest>
@@ -122,8 +122,8 @@
                   <cv:X>0</cv:X>
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
-                <cv:MinArea>100</cv:MinArea>
-                <cv:MaxArea>800</cv:MaxArea>
+                <cv:MinArea>0</cv:MinArea>
+                <cv:MaxArea xsi:nil="true" />
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -194,7 +194,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.028544000000692904</Value>
+          <Value>0.041382399998838082</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -211,7 +211,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.028544000000692904</Value>
+          <Value>0.041382399998838082</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -229,7 +229,7 @@
       </Expression>
       <Expression xsi:type="BitwiseAnd">
         <Operand xsi:type="BooleanProperty">
-          <Value>true</Value>
+          <Value>false</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
@@ -254,7 +254,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.028544000000692904</Value>
+          <Value>0.041382399998838082</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -279,7 +279,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.028544000000692904</Value>
+          <Value>0.041382399998838082</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -297,7 +297,7 @@
       </Expression>
       <Expression xsi:type="BitwiseAnd">
         <Operand xsi:type="BooleanProperty">
-          <Value>true</Value>
+          <Value>false</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">

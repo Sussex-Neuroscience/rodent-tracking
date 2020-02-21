@@ -56,6 +56,9 @@ intervals = intervals.values.astype(int)
 #                     / micro /milli / sec
 intervals = intervals / 1000 / 1000 / 1000
 
+# get the angular velocity
+angVelocity = np.divide(360,intervals)
+
 
 
 

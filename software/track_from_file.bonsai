@@ -11,8 +11,8 @@
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>D:\data_from_animal_fac\4hour_test_olenna2020-02-21T07_04_53.avi</cv:FileName>
-          <cv:PlaybackRate>120</cv:PlaybackRate>
+          <cv:FileName>D:\repositories\rodent-tracking\test_data\test_continous2020-02-06T07_56_44.avi</cv:FileName>
+          <cv:PlaybackRate>0</cv:PlaybackRate>
           <cv:StartPosition>0</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
           <cv:Loop>false</cv:Loop>
@@ -35,7 +35,7 @@
           <cv:Upper>
             <cv:Val0>179</cv:Val0>
             <cv:Val1>255</cv:Val1>
-            <cv:Val2>50</cv:Val2>
+            <cv:Val2>92</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Upper>
         </Combinator>
@@ -49,10 +49,10 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>4</cv:X>
-                  <cv:Y>44</cv:Y>
-                  <cv:Width>602</cv:Width>
-                  <cv:Height>436</cv:Height>
+                  <cv:X>70</cv:X>
+                  <cv:Y>94</cv:Y>
+                  <cv:Width>570</cv:Width>
+                  <cv:Height>386</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
@@ -107,8 +107,8 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>222</cv:X>
-                  <cv:Y>196</cv:Y>
+                  <cv:X>64</cv:X>
+                  <cv:Y>216</cv:Y>
                   <cv:Width>168</cv:Width>
                   <cv:Height>148</cv:Height>
                 </cv:RegionOfInterest>
@@ -194,7 +194,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.019942400002037175</Value>
+          <Value>0.014348800003062934</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -202,7 +202,7 @@
       </Expression>
       <Expression xsi:type="GreaterThan">
         <Operand xsi:type="DoubleProperty">
-          <Value>25</Value>
+          <Value>20</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
@@ -211,7 +211,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.019942400002037175</Value>
+          <Value>0.014348800003062934</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -219,7 +219,7 @@
       </Expression>
       <Expression xsi:type="GreaterThan">
         <Operand xsi:type="DoubleProperty">
-          <Value>50</Value>
+          <Value>20</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="PropertyMapping">
@@ -254,7 +254,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.019942400002037175</Value>
+          <Value>0.014348800003062934</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -279,7 +279,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.019942400002037175</Value>
+          <Value>0.014348800003062934</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -287,7 +287,7 @@
       </Expression>
       <Expression xsi:type="GreaterThan">
         <Operand xsi:type="DoubleProperty">
-          <Value>20</Value>
+          <Value>10</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="PropertyMapping">
@@ -297,7 +297,7 @@
       </Expression>
       <Expression xsi:type="BitwiseOr">
         <Operand xsi:type="BooleanProperty">
-          <Value>false</Value>
+          <Value>true</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">

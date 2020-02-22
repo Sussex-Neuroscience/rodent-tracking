@@ -11,7 +11,7 @@
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>D:\repositories\rodent-tracking\test_data\test_continous2020-02-06T07_56_44.avi</cv:FileName>
+          <cv:FileName>D:\data_from_animal_fac\4hour_test_olenna2020-02-21T11_04_53.avi</cv:FileName>
           <cv:PlaybackRate>0</cv:PlaybackRate>
           <cv:StartPosition>0</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
@@ -35,7 +35,7 @@
           <cv:Upper>
             <cv:Val0>179</cv:Val0>
             <cv:Val1>255</cv:Val1>
-            <cv:Val2>92</cv:Val2>
+            <cv:Val2>56</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Upper>
         </Combinator>
@@ -49,10 +49,10 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>70</cv:X>
-                  <cv:Y>94</cv:Y>
-                  <cv:Width>570</cv:Width>
-                  <cv:Height>386</cv:Height>
+                  <cv:X>0</cv:X>
+                  <cv:Y>64</cv:Y>
+                  <cv:Width>632</cv:Width>
+                  <cv:Height>400</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
@@ -64,8 +64,8 @@
                   <cv:X>0</cv:X>
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
-                <cv:MinArea>1300</cv:MinArea>
-                <cv:MaxArea xsi:nil="true" />
+                <cv:MinArea>800</cv:MinArea>
+                <cv:MaxArea>2500</cv:MaxArea>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -73,6 +73,9 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:LargestBinaryRegion" />
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Area</Selector>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
@@ -82,6 +85,7 @@
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
+            <Edge From="4" To="6" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -107,10 +111,10 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>64</cv:X>
-                  <cv:Y>216</cv:Y>
-                  <cv:Width>168</cv:Width>
-                  <cv:Height>148</cv:Height>
+                  <cv:X>172</cv:X>
+                  <cv:Y>198</cv:Y>
+                  <cv:Width>184</cv:Width>
+                  <cv:Height>136</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
@@ -122,8 +126,8 @@
                   <cv:X>0</cv:X>
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
-                <cv:MinArea>0</cv:MinArea>
-                <cv:MaxArea xsi:nil="true" />
+                <cv:MinArea>1000</cv:MinArea>
+                <cv:MaxArea>1200</cv:MaxArea>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -131,6 +135,9 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:LargestBinaryRegion" />
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Area</Selector>
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
@@ -140,6 +147,7 @@
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
+            <Edge From="4" To="6" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -194,7 +202,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.014348800003062934</Value>
+          <Value>0.039436799997929484</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -211,7 +219,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.014348800003062934</Value>
+          <Value>0.039436799997929484</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -254,7 +262,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.014348800003062934</Value>
+          <Value>0.039436799997929484</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -279,7 +287,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.014348800003062934</Value>
+          <Value>0.039436799997929484</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -297,7 +305,7 @@
       </Expression>
       <Expression xsi:type="BitwiseOr">
         <Operand xsi:type="BooleanProperty">
-          <Value>true</Value>
+          <Value>false</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">

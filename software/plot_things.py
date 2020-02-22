@@ -28,4 +28,10 @@ sns.distplot(fid['Item2.Value.Item3.mousex'])
 
 df = pd.DataFrame([fid['Item2.Value.Item3.mousex'],fid['Item2.Value.Item4.mousey']])
 
-sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid,kind="hex")
+sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid,kind="kde")
+
+#example for later
+#g = sns.jointplot(x="x", y="y", data=df, kind="kde", color="m")
+#g.plot_joint(plt.scatter, c="w", s=30, linewidth=1, marker="+")
+#g.ax_joint.collections[0].set_alpha(0)
+#g.set_axis_labels("$X$", "$Y$");

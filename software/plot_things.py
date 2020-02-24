@@ -23,13 +23,36 @@ whellTime = timeInterval[wheelMoving].sum()
 #get animal moving time
 mouseTime = timeInterval[mouseMoving].sum()
 
+
+#get edges of the frame in pixels, for plotting
+xlim = (0,700)
+ylim = (0,500)
+
 sns.distplot(fid['Item2.Value.Item4.mousey'])
 sns.distplot(fid['Item2.Value.Item3.mousex'])
 
-df = pd.DataFrame([fid['Item2.Value.Item3.mousex'],fid['Item2.Value.Item4.mousey']])
+wheelxLoc = 100
+wheelyLoc = 200
+
+fid['Item2.Value.Item1.wheelx'] = fid['Item2.Value.Item1.wheelx']  + wheelxLoc
+fid['Item2.Value.Item2.wheely'] = fid['Item2.Value.Item2.wheely']  + wheelyLoc
+
+
+
 
 sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid,kind="kde")
+sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid)
+sns.jointplot(x='Item2.Value.Item1.wheelx', y='Item2.Value.Item2.wheely', 
+              data=fid,xlim=xlim, ylim=ylim,
+              marginal_kws=dict(bins=10, rug=False),)
 
+
+
+
+
+
+g = (sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid, color="k")
+    .plot_joint(sns.kdeplot, zorder=0, n_levels=6))
 #example for later
 #g = sns.jointplot(x="x", y="y", data=df, kind="kde", color="m")
 #g.plot_joint(plt.scatter, c="w", s=30, linewidth=1, marker="+")

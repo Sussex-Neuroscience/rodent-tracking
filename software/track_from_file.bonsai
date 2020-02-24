@@ -2,8 +2,9 @@
 <WorkflowBuilder Version="2.4.1"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
-                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:p1="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -56,6 +57,21 @@
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>RegionOfInterest</Selector>
+            </Expression>
+            <Expression xsi:type="PropertySource" TypeArguments="cv:Crop,p1:Rect">
+              <MemberName>RegionOfInterest</MemberName>
+              <Value>
+                <X>0</X>
+                <Y>64</Y>
+                <Width>632</Width>
+                <Height>400</Height>
+              </Value>
+            </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>new( it as mouseROI )</scr:Expression>
+            </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:FindContours">
                 <cv:Mode>External</cv:Mode>
@@ -74,33 +90,28 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:LargestBinaryRegion" />
             </Expression>
-            <Expression xsi:type="MemberSelector">
-              <Selector>Area</Selector>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>new( it as mouse )</scr:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
+            <Edge From="1" To="5" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
-            <Edge From="4" To="5" Label="Source1" />
-            <Edge From="4" To="6" Label="Source1" />
+            <Edge From="4" To="9" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="10" Label="Source1" />
           </Edges>
         </Workflow>
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>Centroid</Selector>
-      </Expression>
-      <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>mousex</scr:Name>
-        <scr:Description>rename centroid x to mousex</scr:Description>
-        <scr:Expression>new( X as mousex )</scr:Expression>
-      </Expression>
-      <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>mousey</scr:Name>
-        <scr:Description>rename centroid y to mousey</scr:Description>
-        <scr:Expression>new( Y as mousey )</scr:Expression>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Workflow>
@@ -136,34 +147,43 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:LargestBinaryRegion" />
             </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>new( it as wheel )</scr:Expression>
+            </Expression>
             <Expression xsi:type="MemberSelector">
-              <Selector>Area</Selector>
+              <Selector>RegionOfInterest</Selector>
+            </Expression>
+            <Expression xsi:type="PropertySource" TypeArguments="cv:Crop,p1:Rect">
+              <MemberName>RegionOfInterest</MemberName>
+              <Value>
+                <X>322</X>
+                <Y>170</Y>
+                <Width>76</Width>
+                <Height>62</Height>
+              </Value>
+            </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Expression>new( it as wheelROI )</scr:Expression>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
             </Expression>
             <Expression xsi:type="WorkflowOutput" />
           </Nodes>
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
+            <Edge From="1" To="6" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
-            <Edge From="4" To="6" Label="Source1" />
+            <Edge From="5" To="9" Label="Source2" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="10" Label="Source1" />
           </Edges>
         </Workflow>
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>Centroid</Selector>
-      </Expression>
-      <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>wheel x</scr:Name>
-        <scr:Description>convert centroid x name to wheelturning</scr:Description>
-        <scr:Expression>new( X as wheelx )</scr:Expression>
-      </Expression>
-      <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>wheel y</scr:Name>
-        <scr:Description>convert centroid y name to wheely
-</scr:Description>
-        <scr:Expression>new( Y as wheely )</scr:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Zip" />
@@ -171,8 +191,12 @@
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Timestamp" />
       </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Name>wheel</scr:Name>
+        <scr:Expression>new (it.Value.Item2 as wheel)</scr:Expression>
+      </Expression>
       <Expression xsi:type="MemberSelector">
-        <Selector>Value.Item1.wheelx</Selector>
+        <Selector>wheel.Item2.wheel.Centroid.Y</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="dsp:Difference">
@@ -180,7 +204,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">
-        <Selector>Value.Item2.wheely</Selector>
+        <Selector>wheel.Item2.wheel.Centroid.X</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="dsp:Difference">
@@ -195,6 +219,10 @@
           <dsp:Order>1</dsp:Order>
         </Combinator>
       </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Name>frameinterval</scr:Name>
+        <scr:Expression>new (it as frameinterval)</scr:Expression>
+      </Expression>
       <Expression xsi:type="PropertyMapping">
         <PropertyMappings>
           <Property Name="Value" />
@@ -202,7 +230,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.039436799997929484</Value>
+          <Value>0.038015999998606276</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -219,7 +247,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.039436799997929484</Value>
+          <Value>0.038015999998606276</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -248,12 +276,15 @@
         <scr:Name>wheelyvel</scr:Name>
         <scr:Expression>new (it as wheelyvel)</scr:Expression>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>frameinterval</scr:Name>
-        <scr:Expression>new (it as frameinterval)</scr:Expression>
+        <scr:Name>mouse</scr:Name>
+        <scr:Expression>new (it.Value.Item1.Item1 as mouse)</scr:Expression>
       </Expression>
       <Expression xsi:type="MemberSelector">
-        <Selector>Value.Item3.mousex</Selector>
+        <Selector>mouse.mouse.Centroid.Y</Selector>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="dsp:Difference">
@@ -262,32 +293,7 @@
       </Expression>
       <Expression xsi:type="Divide">
         <Operand xsi:type="DoubleProperty">
-          <Value>0.039436799997929484</Value>
-        </Operand>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="dsp:Abs" />
-      </Expression>
-      <Expression xsi:type="GreaterThan">
-        <Operand xsi:type="DoubleProperty">
-          <Value>10</Value>
-        </Operand>
-      </Expression>
-      <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>mousexvel</scr:Name>
-        <scr:Expression>new (it as mousexvel)</scr:Expression>
-      </Expression>
-      <Expression xsi:type="MemberSelector">
-        <Selector>Value.Item4.mousey</Selector>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="dsp:Difference">
-          <dsp:Order>1</dsp:Order>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Divide">
-        <Operand xsi:type="DoubleProperty">
-          <Value>0.039436799997929484</Value>
+          <Value>0.038015999998606276</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -303,6 +309,31 @@
           <Property Name="Value" />
         </PropertyMappings>
       </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Name>mouseyvel</scr:Name>
+        <scr:Expression>new (it as mouseyvel)</scr:Expression>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>mouse.mouse.Centroid.X</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:Difference">
+          <dsp:Order>1</dsp:Order>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Divide">
+        <Operand xsi:type="DoubleProperty">
+          <Value>0.038015999998606276</Value>
+        </Operand>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:Abs" />
+      </Expression>
+      <Expression xsi:type="GreaterThan">
+        <Operand xsi:type="DoubleProperty">
+          <Value>10</Value>
+        </Operand>
+      </Expression>
       <Expression xsi:type="BitwiseOr">
         <Operand xsi:type="BooleanProperty">
           <Value>false</Value>
@@ -313,8 +344,15 @@
         <scr:Expression>new (it as mousemoving)</scr:Expression>
       </Expression>
       <Expression xsi:type="scr:ExpressionTransform">
-        <scr:Name>mouseyvel</scr:Name>
-        <scr:Expression>new (it as mouseyvel)</scr:Expression>
+        <scr:Name>mousexvel</scr:Name>
+        <scr:Expression>new (it as mousexvel)</scr:Expression>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="scr:ExpressionTransform">
+        <scr:Name>timestamps</scr:Name>
+        <scr:Expression>new (it.TimeStamp as timestamp)</scr:Expression>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Zip" />
@@ -323,7 +361,7 @@
         <Combinator xsi:type="rx:Zip" />
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>C:\Users\andre\Desktop\all_data.csv</io:FileName>
+        <io:FileName>C:\Users\andre\Desktop\all_data2.csv</io:FileName>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
         <io:Suffix>FileCount</io:Suffix>
@@ -334,68 +372,67 @@
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
       <Edge From="2" To="3" Label="Source1" />
-      <Edge From="2" To="7" Label="Source1" />
-      <Edge From="3" To="4" Label="Source1" />
-      <Edge From="4" To="5" Label="Source1" />
-      <Edge From="4" To="6" Label="Source1" />
-      <Edge From="5" To="11" Label="Source3" />
-      <Edge From="6" To="11" Label="Source4" />
+      <Edge From="2" To="4" Label="Source1" />
+      <Edge From="3" To="5" Label="Source1" />
+      <Edge From="4" To="5" Label="Source2" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="6" To="12" Label="Source1" />
+      <Edge From="6" To="28" Label="Source1" />
+      <Edge From="6" To="45" Label="Source1" />
       <Edge From="7" To="8" Label="Source1" />
+      <Edge From="7" To="10" Label="Source1" />
+      <Edge From="7" To="27" Label="Source4" />
       <Edge From="8" To="9" Label="Source1" />
-      <Edge From="8" To="10" Label="Source1" />
-      <Edge From="9" To="11" Label="Source1" />
-      <Edge From="10" To="11" Label="Source2" />
-      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="9" To="20" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="16" Label="Source1" />
       <Edge From="12" To="13" Label="Source1" />
-      <Edge From="12" To="15" Label="Source1" />
-      <Edge From="12" To="17" Label="Source1" />
-      <Edge From="12" To="32" Label="Source1" />
-      <Edge From="12" To="38" Label="Source1" />
-      <Edge From="12" To="48" Label="Source2" />
       <Edge From="13" To="14" Label="Source1" />
-      <Edge From="14" To="20" Label="Source1" />
-      <Edge From="15" To="16" Label="Source1" />
-      <Edge From="16" To="24" Label="Source1" />
+      <Edge From="13" To="15" Label="Source1" />
+      <Edge From="14" To="46" Label="Source1" />
+      <Edge From="15" To="16" Label="Source2" />
+      <Edge From="15" To="20" Label="Source2" />
+      <Edge From="15" To="38" Label="Source2" />
+      <Edge From="15" To="31" Label="Source2" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="16" To="19" Label="Source1" />
       <Edge From="17" To="18" Label="Source1" />
-      <Edge From="18" To="19" Label="Source1" />
-      <Edge From="18" To="31" Label="Source1" />
-      <Edge From="19" To="20" Label="Source2" />
-      <Edge From="19" To="24" Label="Source2" />
-      <Edge From="19" To="34" Label="Source2" />
-      <Edge From="19" To="40" Label="Source2" />
+      <Edge From="18" To="24" Label="Source1" />
+      <Edge From="19" To="27" Label="Source1" />
       <Edge From="20" To="21" Label="Source1" />
-      <Edge From="20" To="23" Label="Source1" />
+      <Edge From="20" To="26" Label="Source1" />
       <Edge From="21" To="22" Label="Source1" />
-      <Edge From="22" To="28" Label="Source1" />
-      <Edge From="23" To="47" Label="Source5" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="23" To="24" Label="Source2" />
       <Edge From="24" To="25" Label="Source1" />
-      <Edge From="24" To="30" Label="Source1" />
-      <Edge From="25" To="26" Label="Source1" />
-      <Edge From="26" To="27" Label="Source1" />
-      <Edge From="27" To="28" Label="Source2" />
+      <Edge From="25" To="27" Label="Source2" />
+      <Edge From="26" To="27" Label="Source3" />
+      <Edge From="27" To="47" Label="Source1" />
       <Edge From="28" To="29" Label="Source1" />
-      <Edge From="29" To="47" Label="Source6" />
-      <Edge From="30" To="47" Label="Source4" />
-      <Edge From="31" To="47" Label="Source7" />
+      <Edge From="28" To="36" Label="Source1" />
+      <Edge From="28" To="44" Label="Source4" />
+      <Edge From="29" To="30" Label="Source1" />
+      <Edge From="30" To="31" Label="Source1" />
+      <Edge From="31" To="32" Label="Source1" />
+      <Edge From="31" To="35" Label="Source1" />
       <Edge From="32" To="33" Label="Source1" />
       <Edge From="33" To="34" Label="Source1" />
-      <Edge From="34" To="35" Label="Source1" />
-      <Edge From="34" To="37" Label="Source1" />
-      <Edge From="35" To="36" Label="Source1" />
-      <Edge From="36" To="44" Label="Source1" />
-      <Edge From="37" To="47" Label="Source2" />
+      <Edge From="34" To="41" Label="Source2" />
+      <Edge From="35" To="44" Label="Source3" />
+      <Edge From="36" To="37" Label="Source1" />
+      <Edge From="37" To="38" Label="Source1" />
       <Edge From="38" To="39" Label="Source1" />
+      <Edge From="38" To="43" Label="Source1" />
       <Edge From="39" To="40" Label="Source1" />
       <Edge From="40" To="41" Label="Source1" />
-      <Edge From="40" To="46" Label="Source1" />
       <Edge From="41" To="42" Label="Source1" />
-      <Edge From="42" To="43" Label="Source1" />
+      <Edge From="42" To="44" Label="Source1" />
       <Edge From="43" To="44" Label="Source2" />
-      <Edge From="44" To="45" Label="Source1" />
-      <Edge From="45" To="47" Label="Source3" />
-      <Edge From="46" To="47" Label="Source1" />
+      <Edge From="44" To="47" Label="Source2" />
+      <Edge From="45" To="46" Label="Source2" />
+      <Edge From="46" To="47" Label="Source3" />
       <Edge From="47" To="48" Label="Source1" />
-      <Edge From="48" To="49" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

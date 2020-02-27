@@ -2,57 +2,77 @@ import os
 import pandas as pd
 import seaborn as sns
 import numpy as np
+import matplotlib.pyplot as plt
 
 
-
-filepath = "/mnt/d/repositories/rodent-tracking/test_data/all_data1.csv"
+filepath = "/mnt/d/repositories/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
 
 fid = pd.read_csv(filepath)
 
 # print all the variables names
 print(fid.keys())
 
+#rename indexes so it is easier to call them 
+# there is probably a better way of setting their names in Bonsai...
+
+
+for key in fid.keys():
+    print(key)
+    secondDot = key.find(".",6)
+    fid = fid.rename(columns = {key:key[secondDot+1:]})
+
+
+
 # set some variables
-wheelMoving = fid["Item1.Item6.wheelmoving"]
-mouseMoving = fid["Item1.Item3.mousemoving"]
-timeInterval = fid['Item1.Item7.frameinterval']
+wheelMoving = fid["wheelmoving"]
+mouseMoving = fid["mousemoving"]
+timeInterval = fid["frameinterval"]
 
 #get running wheel time
-whellTime = timeInterval[wheelMoving].sum()
+wheelTime = timeInterval[wheelMoving].sum()
 
 #get animal moving time
 mouseTime = timeInterval[mouseMoving].sum()
 
-
 #get edges of the frame in pixels, for plotting
-xlim = (0,700)
-ylim = (0,500)
+#cameraXEdge = fid["mouse.mouseROI.width"]
+#cameraYEdge = fid["mouse.mouseROI.width"]
 
-sns.distplot(fid['Item2.Value.Item4.mousey'])
-sns.distplot(fid['Item2.Value.Item3.mousex'])
+cameraXEdge = 680
+cameraYEdge = 500
 
-wheelxLoc = 100
-wheelyLoc = 200
+xlim = (0,cameraXEdge)
+ylim = (0,cameraYEdge)
 
-fid['Item2.Value.Item1.wheelx'] = fid['Item2.Value.Item1.wheelx']  + wheelxLoc
-fid['Item2.Value.Item2.wheely'] = fid['Item2.Value.Item2.wheely']  + wheelyLoc
+sns.distplot(fid['mouse.mouse.Centroid.X'])
+sns.distplot(fid['mouse.mouse.Centroid.Y'])
+
+#origin location in pixels of the wheel tracking marker on the video feed
+wheelxLoc = fid["wheel.Item1.wheelROI.X"][0]
+wheelyLoc = fid["wheel.Item1.wheelROI.Y"][0]
+
+fid['wheel.Item2.wheel.Centroid.X'] = fid['wheel.Item2.wheel.Centroid.X']  + wheelxLoc
+fid['wheel.Item2.wheel.Centroid.Y'] = fid['wheel.Item2.wheel.Centroid.Y']  + wheelyLoc
 
 
 
 
 sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid,kind="kde")
 sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid)
-sns.jointplot(x='Item2.Value.Item1.wheelx', y='Item2.Value.Item2.wheely', 
-              data=fid,xlim=xlim, ylim=ylim,
-              marginal_kws=dict(bins=10, rug=False),)
+
+sns.jointplot(x='wheel.Item2.wheel.Centroid.X', y='wheel.Item2.wheel.Centroid.Y', 
+              data=fid,xlim=xlim, ylim=ylim,kind="kde",
+              #marginal_kws=dict(bins=10, rug=False),
+              )
+sns.jointplot(x='mouse.mouse.Centroid.X', y='mouse.mouse.Centroid.Y', 
+              data=fid,xlim=xlim, ylim=ylim,kind="hex",
+              #marginal_kws=dict(bins=10, rug=False),
+              )
 
 
-
-
-
-
-g = (sns.jointplot(x='Item2.Value.Item3.mousex', y='Item2.Value.Item4.mousey', data=fid, color="k")
-    .plot_joint(sns.kdeplot, zorder=0, n_levels=6))
+#plt.hist(x = [fid['mouse.mouse.Centroid.X'].dropna()],bins = int(680/20))
+plt.hist(x = [fid['mouse.mouse.Centroid.X'].dropna()],bins = 40)
+plt.hist(x = [fid['mouseyvel'].dropna()],range=[-3000,3000],bins=200)
 #example for later
 #g = sns.jointplot(x="x", y="y", data=df, kind="kde", color="m")
 #g.plot_joint(plt.scatter, c="w", s=30, linewidth=1, marker="+")

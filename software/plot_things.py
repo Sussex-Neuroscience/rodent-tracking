@@ -1,4 +1,5 @@
 import os
+
 import pandas as pd
 import seaborn as sns
 import numpy as np
@@ -16,6 +17,8 @@ print(fid.keys())
 # there is probably a better way of setting their names in Bonsai...
 
 
+
+
 for key in fid.keys():
     print(key)
     secondDot = key.find(".",6)
@@ -27,6 +30,24 @@ for key in fid.keys():
 wheelMoving = fid["wheelmoving"]
 mouseMoving = fid["mousemoving"]
 timeInterval = fid["frameinterval"]
+
+
+
+
+#travelled distance
+'''
+if there was only the mouse on the cage, the travelled distance would be: 
+- given by pytagoras a2 = b2 X c2 for where b and c are x and y
+dimensions, and their magnitude is the difference between 2 consecutive frames.
+
+But the mouse has a wheel in its cage, so we need to add the "distance" the wheel
+travelled to the distance travelled by the animal (since while running on the wheel,
+the animal is static in relation to the cage).
+
+so in the end we want the distance travelled by the mouse while it was NOT on 
+the wheel, plus the distance travelled by the wheel, while the wheel was moving
+
+'''
 
 #get running wheel time
 wheelTime = timeInterval[wheelMoving].sum()

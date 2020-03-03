@@ -6,8 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-filepath = "/mnt/d/repositories/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
-
+#filepath = "/mnt/d/repositories/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
+filepath = "~/repositories/sussex_neuro/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
 fid = pd.read_csv(filepath)
 
 # print all the variables names
@@ -27,9 +27,21 @@ for key in fid.keys():
 
 
 # set some variables
+wheelROIY = fid["wheel.Item1.wheelROI.Y"]
+wheelROIX = fid["wheel.Item1.wheelROI.Y"]
+wheelX = fid["wheel.Item2.wheel.Centroid.X"]
+wheelY = fid["wheel.Item2.wheel.Centroid.Y"]
+
+
 wheelMoving = fid["wheelmoving"]
 mouseMoving = fid["mousemoving"]
 timeInterval = fid["frameinterval"]
+
+
+mouseX = fid["mouse.mouse.Centroid.X"]
+mouseY = fid["mouse.mouse.Centroid.Y"]
+
+
 
 
 
@@ -48,6 +60,16 @@ so in the end we want the distance travelled by the mouse while it was NOT on
 the wheel, plus the distance travelled by the wheel, while the wheel was moving
 
 '''
+##mouse
+###distance X
+mouseDistX = np.diff(mouseX.dropna())
+
+###distance y
+mouseDistY = np.diff(mouseY.dropna())
+
+mouseTotalDist = np.sqrt(mouseDistX**2+mouseDistY**2) 
+
+np.sum(mouseTotalDist)
 
 #get running wheel time
 wheelTime = timeInterval[wheelMoving].sum()

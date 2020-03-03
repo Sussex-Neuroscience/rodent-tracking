@@ -6,9 +6,11 @@ import numpy as np
 
 
 
-filePath = os.getcwd()
+#filePath = os.getcwd()
 
-filePath = "/mnt/d/repositories/rodent-tracking/test_data/"
+#filePath = "/mnt/d/repositories/rodent-tracking/test_data/"
+
+filePath = "~/repositories/sussex_neuro/rodent-tracking/test_data/"
 
 #oneDirUp = os.path.dirname(filePath)
 #filePath = oneDirUp + "/test_data/"

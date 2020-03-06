@@ -6,8 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#filepath = "/mnt/d/repositories/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
-filepath = "~/repositories/sussex_neuro/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
+filepath = "/mnt/d/repositories/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
+
+#filepath = "~/repositories/sussex_neuro/rodent-tracking/test_data/all_data_olenna2020-02-24T18_07_54.csv"
 fid = pd.read_csv(filepath)
 
 # print all the variables names
@@ -20,9 +21,10 @@ print(fid.keys())
 
 
 for key in fid.keys():
-    print(key)
+    
     secondDot = key.find(".",6)
     fid = fid.rename(columns = {key:key[secondDot+1:]})
+    print(key[secondDot+1:])
 
 
 
@@ -61,11 +63,16 @@ the wheel, plus the distance travelled by the wheel, while the wheel was moving
 
 '''
 ##mouse
+
 ###distance X
-mouseDistX = np.diff(mouseX.dropna())
+mouseDistX = np.diff(mouseX)
+
+### distance X when wheel was NOT moving
+mouseDistX = mouseDistX[~wheelMoving]
+
 
 ###distance y
-mouseDistY = np.diff(mouseY.dropna())
+mouseDistY = np.diff(mouseY)
 
 mouseTotalDist = np.sqrt(mouseDistX**2+mouseDistY**2) 
 
@@ -78,7 +85,7 @@ wheelTime = timeInterval[wheelMoving].sum()
 mouseTime = timeInterval[mouseMoving].sum()
 
 #get edges of the frame in pixels, for plotting
-#cameraXEdge = fid["mouse.mouseROI.width"]
+cameraXEdge = fid["mouse.mouseROI.width"]
 #cameraYEdge = fid["mouse.mouseROI.width"]
 
 cameraXEdge = 680

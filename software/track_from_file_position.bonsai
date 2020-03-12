@@ -30,13 +30,13 @@
           <cv:Lower>
             <cv:Val0>0</cv:Val0>
             <cv:Val1>0</cv:Val1>
-            <cv:Val2>0</cv:Val2>
+            <cv:Val2>47</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Lower>
           <cv:Upper>
             <cv:Val0>179</cv:Val0>
             <cv:Val1>255</cv:Val1>
-            <cv:Val2>89</cv:Val2>
+            <cv:Val2>98</cv:Val2>
             <cv:Val3>0</cv:Val3>
           </cv:Upper>
         </Combinator>
@@ -50,10 +50,10 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>60</cv:X>
-                  <cv:Y>96</cv:Y>
-                  <cv:Width>580</cv:Width>
-                  <cv:Height>380</cv:Height>
+                  <cv:X>62</cv:X>
+                  <cv:Y>76</cv:Y>
+                  <cv:Width>578</cv:Width>
+                  <cv:Height>404</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
@@ -81,7 +81,7 @@
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
                 <cv:MinArea>800</cv:MinArea>
-                <cv:MaxArea xsi:nil="true" />
+                <cv:MaxArea>12000</cv:MaxArea>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -89,6 +89,9 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:LargestBinaryRegion" />
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Area</Selector>
             </Expression>
             <Expression xsi:type="scr:ExpressionTransform">
               <scr:Expression>new( it as mouse )</scr:Expression>
@@ -104,12 +107,13 @@
             <Edge From="1" To="5" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
-            <Edge From="4" To="9" Label="Source2" />
+            <Edge From="4" To="10" Label="Source2" />
             <Edge From="5" To="6" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
             <Edge From="7" To="8" Label="Source1" />
-            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="7" To="9" Label="Source1" />
             <Edge From="9" To="10" Label="Source1" />
+            <Edge From="10" To="11" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -178,10 +182,10 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>70</cv:X>
-                  <cv:Y>214</cv:Y>
-                  <cv:Width>170</cv:Width>
-                  <cv:Height>166</cv:Height>
+                  <cv:X>62</cv:X>
+                  <cv:Y>182</cv:Y>
+                  <cv:Width>200</cv:Width>
+                  <cv:Height>200</cv:Height>
                 </cv:RegionOfInterest>
               </Combinator>
             </Expression>
@@ -194,7 +198,7 @@
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
                 <cv:MinArea>0</cv:MinArea>
-                <cv:MaxArea>1200</cv:MaxArea>
+                <cv:MaxArea>800</cv:MaxArea>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -202,6 +206,9 @@
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:LargestBinaryRegion" />
+            </Expression>
+            <Expression xsi:type="MemberSelector">
+              <Selector>Area</Selector>
             </Expression>
             <Expression xsi:type="scr:ExpressionTransform">
               <scr:Expression>new( it as wheel )</scr:Expression>
@@ -229,15 +236,16 @@
           <Edges>
             <Edge From="0" To="1" Label="Source1" />
             <Edge From="1" To="2" Label="Source1" />
-            <Edge From="1" To="6" Label="Source1" />
+            <Edge From="1" To="7" Label="Source1" />
             <Edge From="2" To="3" Label="Source1" />
             <Edge From="3" To="4" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
-            <Edge From="5" To="9" Label="Source2" />
-            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="4" To="6" Label="Source1" />
+            <Edge From="6" To="10" Label="Source2" />
             <Edge From="7" To="8" Label="Source1" />
             <Edge From="8" To="9" Label="Source1" />
             <Edge From="9" To="10" Label="Source1" />
+            <Edge From="10" To="11" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>

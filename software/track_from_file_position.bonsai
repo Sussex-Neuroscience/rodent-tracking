@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.4.1"
+<WorkflowBuilder Version="2.5.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
-                 xmlns:p1="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
                  xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:p1="clr-namespace:OpenCV.Net;assembly=OpenCV.Net"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
@@ -12,9 +12,9 @@
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="cv:FileCapture">
-          <cv:FileName>C:\Users\Andre\Downloads\rodent-tracking\test_data\test_continous2020-02-06T07_56_44.avi</cv:FileName>
-          <cv:PlaybackRate>0</cv:PlaybackRate>
-          <cv:StartPosition>0</cv:StartPosition>
+          <cv:FileName>D:\repositories\rodent-tracking\test_data\Arya_trimmed.avi</cv:FileName>
+          <cv:PlaybackRate>30</cv:PlaybackRate>
+          <cv:StartPosition>100</cv:StartPosition>
           <cv:PositionUnits>Frames</cv:PositionUnits>
           <cv:Loop>false</cv:Loop>
           <cv:Playing>false</cv:Playing>
@@ -42,7 +42,7 @@
                 <cv:Upper>
                   <cv:Val0>179</cv:Val0>
                   <cv:Val1>255</cv:Val1>
-                  <cv:Val2>102</cv:Val2>
+                  <cv:Val2>68</cv:Val2>
                   <cv:Val3>0</cv:Val3>
                 </cv:Upper>
               </Combinator>
@@ -50,8 +50,8 @@
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="cv:Crop">
                 <cv:RegionOfInterest>
-                  <cv:X>67</cv:X>
-                  <cv:Y>128</cv:Y>
+                  <cv:X>326</cv:X>
+                  <cv:Y>130</cv:Y>
                   <cv:Width>209</cv:Width>
                   <cv:Height>261</cv:Height>
                 </cv:RegionOfInterest>
@@ -65,8 +65,8 @@
                   <cv:X>0</cv:X>
                   <cv:Y>0</cv:Y>
                 </cv:Offset>
-                <cv:MinArea>350</cv:MinArea>
-                <cv:MaxArea>800</cv:MaxArea>
+                <cv:MinArea>450</cv:MinArea>
+                <cv:MaxArea>700</cv:MaxArea>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">
@@ -210,7 +210,7 @@
                 <cv:Upper>
                   <cv:Val0>179</cv:Val0>
                   <cv:Val1>255</cv:Val1>
-                  <cv:Val2>106</cv:Val2>
+                  <cv:Val2>68</cv:Val2>
                   <cv:Val3>0</cv:Val3>
                 </cv:Upper>
               </Combinator>

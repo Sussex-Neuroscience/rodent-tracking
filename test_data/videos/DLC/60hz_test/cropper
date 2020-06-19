@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# simple script to crop long videos into smaller ones, 
+# so it is easy to upload them to GH, work with DLC, etc.
+
+#{START..END..INCREMENT} syntax:
+
+echo "Bash version ${BASH_VERSION}..."
+for i in {0..3600..300}
+  do
+     echo "starting at $i "
+     ffmpeg -f avi -r:v 60 -i jamie_60hz2020-06-02T11_43_50.avi -ss $i -t 300 output-video-file-$i.mp4
+  done
+
+

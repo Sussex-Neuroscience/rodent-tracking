@@ -4,3 +4,8 @@
 */.ipynb_checkpoints/*
 #ignore pycache
 */__pycache__/*
+#R
+.Rhistory
+
+#large file
+*jamie_60hz2020-06-02T11_43_50*
